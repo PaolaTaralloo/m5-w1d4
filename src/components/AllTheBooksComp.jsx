@@ -47,15 +47,7 @@ const AllTheBooks = () => {
         <Row>
           {books.map((book) => (
             <SingleBookComp key={book.asin} book={book} />
-
-            // <Col key={book.asin} md={3} >
-            //   <Card className="mb-4">
-            //     <Card.Img variant="top" src={book.img} alt={book.title} />
-            //     <Card.Body>
-            //       <Card.Title>{book.title}</Card.Title>
-            //     </Card.Body>
-            //   </Card>
-            // </Col>
+            
           ))}
         </Row>
       </Container>

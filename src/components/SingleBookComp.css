@@ -1,13 +1,5 @@
-.book-cover {
-  border: none;
-}
-
-.selected {
-  border: 3px solid red;
-}
-
-.card-img-top{
+  .card-img-top{
   width: 100% !important;
   height: 60% !important;
   object-fit: cover !important;
-}
+} 
