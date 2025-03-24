@@ -19,7 +19,7 @@ function SingleBookComp({ book }) {
                     className="mb-4 h-100 card-custom"
                     onClick={handleClick}
                     style={{
-                        border: selected ? '2px solid red' : 'border',
+                        border: selected ? '3px solid red' : '1px solid grey',
                     }}
                 >
                     <Card.Img
