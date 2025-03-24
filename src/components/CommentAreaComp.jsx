@@ -63,12 +63,20 @@ const CommentAreaComp = ({ asin }) => {
     //È il secondo argomento dell'useEffect che rapprensenta un dipedenza
     //ed indica che l'useEffect verrà eseguito ogni volta che il valore di asin cambia
   }, [asin])
+
+  const updateCommentList = (id) => {
+    setComments((prevComments) => prevComments.filter(comment => comment._id !== id))
+  }
+
   return (
     <div className="text-center">
       {loading && <LoadingComp />} 
       {error && <ErrorComp />} 
       <AddCommentComp asin={asin} /> 
-      <CommentListComp commentsToShow={comments} />
+      <CommentListComp 
+      commentsToShow={comments} 
+      updateCommentList={updateCommentList}
+      />
     </div>
   )
 }

@@ -1,6 +1,6 @@
 import { Button, ListGroup } from 'react-bootstrap'
 
-const SingleCommentComp = ({ comment }) => {
+const SingleCommentComp = ({ comment, deleteCommentFromList }) => {
   const deleteComment = async (asin) => {
     try {
       let response = await fetch(
@@ -13,6 +13,8 @@ const SingleCommentComp = ({ comment }) => {
         }
       )
       if (response.ok) {
+        //se il commento vien eliminato, chiama la funzione per aggiornare la lista dei commenti
+        deleteCommentFromList(comment._id)
         alert('La recensione è stata eliminata!')
       } else {
         throw new Error('La recensione non è stata eliminata!')
