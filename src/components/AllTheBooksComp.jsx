@@ -1,47 +1,41 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
-import { Container, Row, Col, Form } from 'react-bootstrap';
+import { Container, Row } from 'react-bootstrap';
 import SingleBookComp from '../components/SingleBookComp.jsx';
 
 // Importa i dati dai file JSON
 import fantasyBooks from '../data/fantasy.json';
-// import historyBooks from '../data/history.json';
-// import horrorBooks from '../data/horror.json';
-// import romanceBooks from '../data/romance.json';
-// import scifiBooks from '../data/scifi.json';
+
 
 // Unisci tutti i libri in un unico array
-const allBooks = [
-  ...fantasyBooks,
-  // ...historyBooks,
-  // ...horrorBooks,
-  // ...romanceBooks,
-  // ...scifiBooks
-];
+const allBooks = [...fantasyBooks];
 
-const AllTheBooks = () => {
+const AllTheBooks = ({search}) => {
   const [books, setBooks] = useState (allBooks)
-  const [search, setSearch] = useState ()
+  // const [search, setSearch] = useState ()
 
-  const handleSearch = (event) => {
-    setSearch (event.target.value)
-    // console.log(search)
+  // const handleSearch = (event) => {
+  //   setSearch (event.target.value)
+  //   // console.log(search)
 
-    const filteredBook = allBooks.filter (book => book.title.toLowerCase().includes(event.target.value.toLowerCase()))
-    setBooks (filteredBook)
-  }
+  useEffect (() => {
+    const filteredBooks = allBooks.filter ((book) => 
+      book.title.toLowerCase().includes(search.toLowerCase())
+  )
+  setBooks(filteredBooks)
+  }, [search])
 
   return (
     <>
-     <Container className="mt-4, mb-3" >
+     {/* <Container className="mt-4, mb-3" >
       <Form>
         <Row>
           <Col className='mb-3'>
-            <Form.Control placeholder="First name" onChange={handleSearch}/>
+            <Form.Control placeholder="Cerca" onChange={handleSearch}/>
           </Col>
         </Row>
       </Form>
-      </Container>
+      </Container> */}
 
       <Container className="mt-4, mb-5" >
         <Row>
