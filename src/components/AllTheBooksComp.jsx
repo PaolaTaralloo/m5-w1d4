@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 
-import { Container, Row } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap';
 import SingleBookComp from '../components/SingleBookComp.jsx';
+import CommentAreaComp from '../components/CommentAreaComp.jsx';
 
 // Importa i dati dai file JSON
 import fantasyBooks from '../data/fantasy.json';
@@ -11,6 +12,7 @@ import fantasyBooks from '../data/fantasy.json';
 const allBooks = [...fantasyBooks];
 
 const AllTheBooks = ({search}) => {
+  const [selected, setSelected] = useState(false);
   const [books, setBooks] = useState (allBooks)
   // const [search, setSearch] = useState ()
 
@@ -39,10 +41,23 @@ const AllTheBooks = ({search}) => {
 
       <Container className="mt-4, mb-5" >
         <Row>
+        <Col md={8}>
+        <Row>
           {books.map((book) => (
-            <SingleBookComp key={book.asin} book={book} />
+            <SingleBookComp
+            key={book.asin}
+            book={book}
+            selected={selected}
+            setSelected={setSelected}/>
             
           ))}
+          </Row>
+          </Col>
+          <Col md={4}>
+          <h3>Comment Area</h3>
+          <span>Seleziona il libro e lascia un commento!</span>
+          <CommentAreaComp asin={selected}></CommentAreaComp>
+          </Col>
         </Row>
       </Container>
     </>
