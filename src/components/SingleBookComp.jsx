@@ -37,6 +37,7 @@ function SingleBookComp({ book, selected, setSelected }) {
                     />
                     <Card.Body>
                         <Card.Title>{book.title}</Card.Title>
+                        
                     </Card.Body>
                 </Card>
                 {/* <Row>

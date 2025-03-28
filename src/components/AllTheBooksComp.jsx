@@ -12,7 +12,7 @@ import fantasyBooks from '../data/fantasy.json';
 const allBooks = [...fantasyBooks];
 
 const AllTheBooks = ({search}) => {
-  const [selected, setSelected] = useState(false);
+  const [selected, setSelected] = useState(null);
   const [books, setBooks] = useState (allBooks)
   // const [search, setSearch] = useState ()
 
@@ -55,8 +55,11 @@ const AllTheBooks = ({search}) => {
           </Col>
           <Col md={4}>
           <h3>Comment Area</h3>
-          <span>Seleziona il libro e lascia un commento!</span>
-          <CommentAreaComp asin={selected}></CommentAreaComp>
+          {selected ? ( 
+            <CommentAreaComp asin={selected}></CommentAreaComp>
+          ):(<span>Seleziona un libro e lascia un commento!</span>
+          )}
+         
           </Col>
         </Row>
       </Container>
