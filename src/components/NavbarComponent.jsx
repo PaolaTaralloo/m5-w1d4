@@ -1,9 +1,14 @@
-import React from 'react'
-import { Navbar, Container, Nav, Form } from 'react-bootstrap';
+import React, { useContext } from 'react'
+import { Navbar, Container, Nav, Form, Button } from 'react-bootstrap';
+import { ThemeContext } from '../modules/context';
+import { BsSun, BsMoon } from 'react-icons/bs'; 
 
 export default function NavbarComponent({ search, handleSearch }) {
+
+  const [theme, setTheme] = useContext(ThemeContext)
+
   return (
-    <Navbar bg="dark" data-bs-theme="dark">
+    <Navbar bg={theme} data-bs-theme={theme}>
       <Container>
         <Navbar.Brand href="#home">Navbar</Navbar.Brand>
         <Nav className="me-auto">
@@ -21,7 +26,16 @@ export default function NavbarComponent({ search, handleSearch }) {
             onChange={handleSearch}
           />
         </Form>
+
+        <Button
+          variant="outline-secondary"
+          onClick={() => {
+            theme === 'light' ? setTheme('dark') : setTheme('light')
+          }}
+          className='ms-3'
+        >
+            {theme === 'light' ? <BsMoon /> : <BsSun />}</Button>
       </Container>
-    </Navbar>
+    </Navbar >
   )
 }
