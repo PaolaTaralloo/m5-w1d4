@@ -1,14 +1,14 @@
 import { useState } from 'react'
 import './App.css'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import NavbarComponent from './components/NavbarComponent'
 import FooterComponent from './components/FooterComponent'
-import WelcomeAlertComp from './components/WelcomeAlertComp'
-import AllTheBooksComp from './components/AllTheBooksComp'
 import { ThemeContext } from './modules/context'
+import Homepage from './pages/Homepage'
 
 function App() {
   const [search, setSearch] = useState('')
-  const [ theme, setTheme ] = useState('light')
+  const [theme, setTheme] = useState('light')
 
   const handleSearch = (event) => {
     setSearch(event.target.value)
@@ -16,12 +16,17 @@ function App() {
 
   return (
     <>
-      <ThemeContext.Provider value={[theme, setTheme]}>
-        <NavbarComponent search={search} handleSearch={handleSearch} />
-        <WelcomeAlertComp />
-        <AllTheBooksComp search={search} />
-        <FooterComponent />
-      </ThemeContext.Provider>
+      <BrowserRouter>
+        <ThemeContext.Provider value={[theme, setTheme]}>
+          <NavbarComponent search={search} handleSearch={handleSearch} />
+          <Routes>
+            <Route path='/' element={<Homepage search= {search} />} />
+          </Routes>
+          <FooterComponent />
+        </ThemeContext.Provider>
+
+
+      </BrowserRouter>
     </>
 
   )
