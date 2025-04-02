@@ -1,0 +1,32 @@
+#jumbtron {
+    background-image: url('../assets/Jumbtron.png') ;
+    height: 80%;
+    text-align: start;
+    padding-inline: 4em; 
+
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat;
+}
+
+.alert-heading {
+    font-size: 3em !important;
+    font-weight: bolder !important;
+    margin-top: 1em !important;
+}
+
+.btnCustom{
+    background-color: #EF5C48 !important;
+    border-color: #EF5C48 !important;
+    margin-bottom: 2em !important;
+}
+
+
+.btnCustom:hover{
+    background-color: #d95341 !important;
+    border-color: #d95341 !important;
+}
+.img{
+    width:75% !important;
+    height:auto !important; 
+}

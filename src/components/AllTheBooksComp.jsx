@@ -40,11 +40,13 @@ const AllTheBooks = ({search}) => {
       </Container> */}
 
       <Container className="mt-4, mb-5" >
+        <Row >
+        <Col md={8} className = "mt-4">
         <Row>
-        <Col md={8}>
-        <Row>
+        <h4>Fantasy Books</h4>
           {books.map((book) => (
             <SingleBookComp
+            
             key={book.asin}
             book={book}
             selected={selected}
@@ -53,8 +55,8 @@ const AllTheBooks = ({search}) => {
           ))}
           </Row>
           </Col>
-          <Col md={4}>
-          <h3>Comment Area</h3>
+          <Col md={4} className = "mt-4">
+          <h4>Comment Area</h4>
           {selected ? ( 
             <CommentAreaComp asin={selected}></CommentAreaComp>
           ):(<span>Seleziona un libro e lascia un commento!</span>

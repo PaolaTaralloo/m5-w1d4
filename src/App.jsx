@@ -5,6 +5,7 @@ import NavbarComponent from './components/NavbarComponent'
 import FooterComponent from './components/FooterComponent'
 import { ThemeContext } from './modules/context'
 import Homepage from './pages/Homepage'
+import Errorpage from './pages/Errorpage'
 
 function App() {
   const [search, setSearch] = useState('')
@@ -21,6 +22,7 @@ function App() {
           <NavbarComponent search={search} handleSearch={handleSearch} />
           <Routes>
             <Route path='/' element={<Homepage search= {search} />} />
+            <Route path='*' element={<Errorpage />} />
           </Routes>
           <FooterComponent />
         </ThemeContext.Provider>

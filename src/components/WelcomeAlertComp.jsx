@@ -1,20 +1,34 @@
 import React from 'react'
-import {Container, Alert} from 'react-bootstrap';
+import { Container, Row, Col, Alert, Button } from 'react-bootstrap';
+
+import './WelcomeAlertComp.css';
+import booksJumb from '../assets/booksJumb.png';
 
 export default function WelcomeAlertComp() {
     return (
-        <Container className="mt-4">
-            <Alert variant="success">
-                <Alert.Heading>Benvenuto in BookShop!!</Alert.Heading>
-                <p>
-                    Il nostro e-commerce di libri online offre una vasta selezione di titoli per tutti i gusti e le esigenze.
-                    Leggere non è mai stato così facile. Scopri nuovi mondi e approfondisci le tue passioni con noi!
-                </p>
-                <hr />
-                <p className="mb-0">
-                    Dalla narrativa alla saggistica, dai libri per bambini ai grandi classici, trovi il volume perfetto in pochi click.
-                </p>
-            </Alert>
-        </Container>
+
+        <>
+            <Container fluid id='jumbtron' className='mb-5'>
+                <Container>
+                <Row className='align-items-center'>
+                    <Col sm={12} md={6} >
+                        <Alert.Heading className='mb-0 p-0'>Benvenuto</Alert.Heading>
+                        <Alert.Heading className='m-0 p-0'>in EpicBook Library!</Alert.Heading>
+                        <p>
+                            Leggere non è mai stato così facile. <br/>Scopri nuovi mondi e approfondisci le tue passioni con noi!
+                        </p>
+                        <hr />
+                        <Button className="mb-2 btnCustom" >
+                           Scopri di più
+                        </Button>
+                    </Col>
+                    <Col sm={12} md={6} className='text-center'>
+                        {/* <img src="/assets/booksJumb.png" alt="Books" className='img-fluid' /> */}
+                        <img src={booksJumb} alt="Books" className='img' />
+                    </Col>
+                </Row>
+                </Container>
+            </Container>
+        </>
     )
 }

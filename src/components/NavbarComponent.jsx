@@ -1,7 +1,8 @@
 import React, { useContext } from 'react'
 import { Navbar, Container, Nav, Form, Button } from 'react-bootstrap';
 import { ThemeContext } from '../modules/context';
-import { BsSun, BsMoon } from 'react-icons/bs'; 
+import { BsSun, BsMoon } from 'react-icons/bs';
+import EpicBooklogoC from '../assets/EpicBooklogoC.svg';
 
 export default function NavbarComponent({ search, handleSearch }) {
 
@@ -10,7 +11,9 @@ export default function NavbarComponent({ search, handleSearch }) {
   return (
     <Navbar bg={theme} data-bs-theme={theme}>
       <Container>
-        <Navbar.Brand href="#home">Navbar</Navbar.Brand>
+        <Navbar.Brand href="#home">
+          <img src={EpicBooklogoC} alt="logoEpicBook" style={{ height: '40px' }} />
+        </Navbar.Brand>
         <Nav className="me-auto">
           <Nav.Link href="#home">Home</Nav.Link>
           <Nav.Link href="#features">About</Nav.Link>
@@ -34,7 +37,7 @@ export default function NavbarComponent({ search, handleSearch }) {
           }}
           className='ms-3'
         >
-            {theme === 'light' ? <BsMoon /> : <BsSun />}</Button>
+          {theme === 'light' ? <BsMoon /> : <BsSun />}</Button>
       </Container>
     </Navbar >
   )
