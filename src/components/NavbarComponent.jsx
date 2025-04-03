@@ -3,6 +3,7 @@ import { Navbar, Container, Nav, Form, Button } from 'react-bootstrap';
 import { ThemeContext } from '../modules/context';
 import { BsSun, BsMoon } from 'react-icons/bs';
 import EpicBooklogoC from '../assets/EpicBooklogoC.svg';
+import { Link } from 'react-router-dom';
 
 export default function NavbarComponent({ search, handleSearch }) {
 
@@ -15,7 +16,10 @@ export default function NavbarComponent({ search, handleSearch }) {
           <img src={EpicBooklogoC} alt="logoEpicBook" style={{ height: '40px' }} />
         </Navbar.Brand>
         <Nav className="me-auto">
-          <Nav.Link href="#home">Home</Nav.Link>
+          <Link
+          to = "/Homepage"
+          className='nav-link'
+          >Home</Link>
           <Nav.Link href="#features">About</Nav.Link>
           <Nav.Link href="#pricing">Browse</Nav.Link>
         </Nav>

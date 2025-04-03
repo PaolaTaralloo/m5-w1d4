@@ -24,6 +24,7 @@ function App() {
             <Route path='/' element={<Homepage search= {search} />} />
             <Route path='*' element={<Errorpage />} />
           </Routes>
+          <Homepage search= {search} />
           <FooterComponent />
         </ThemeContext.Provider>
 
