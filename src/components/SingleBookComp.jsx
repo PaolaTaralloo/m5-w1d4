@@ -1,10 +1,18 @@
 import React, { useState } from 'react';
-import { Col, Card } from 'react-bootstrap';
+import { Col, Card, Button } from 'react-bootstrap';
 import './SingleBookComp.css';
+import { useNavigate } from 'react-router-dom';
+
 
 
 function SingleBookComp({ book, selected, setSelected }) {
-   
+
+   const navigate = useNavigate();
+
+    const handleClick = (asin) => {
+                navigate('/Detailpage/' + asin);
+
+    }
 
     return (
         <Col key={book.asin} md={3} xs={6} className="my-2">
@@ -28,8 +36,9 @@ function SingleBookComp({ book, selected, setSelected }) {
                         <Card.Title>{book.title}</Card.Title>
                         
                     </Card.Body>
+                    
                 </Card>
-            
+                <Button variant="outline-primary" onClick={() => handleClick(book.asin)}>Scopri di più</Button>
             </div>
         </Col>
     );

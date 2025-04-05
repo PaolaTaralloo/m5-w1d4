@@ -1,11 +1,15 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
+import DetailBookComp from '../components/DetailBookComp';
+
 
 function Detailpage() {
+
   return (
-    <div>
-      
-    </div>
-  )
+    <>
+      <DetailBookComp />
+    </>
+  );
+
 }
 
-export default Detailpage
+export default Detailpage;

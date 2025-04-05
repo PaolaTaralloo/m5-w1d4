@@ -1,0 +1,11 @@
+.main-content{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 4em;
+}
+.font-size{
+   font-family: 2em !important;
+  } 

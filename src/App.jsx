@@ -5,6 +5,7 @@ import NavbarComponent from './components/NavbarComponent'
 import FooterComponent from './components/FooterComponent'
 import { ThemeContext } from './modules/context'
 import Homepage from './pages/Homepage'
+import Detailpage from './pages/Detailpage'
 import Errorpage from './pages/Errorpage'
 
 function App() {
@@ -22,9 +23,10 @@ function App() {
           <NavbarComponent search={search} handleSearch={handleSearch} />
           <Routes>
             <Route path='/' element={<Homepage search= {search} />} />
+            <Route path='/Homepage' element={<Homepage search= {search} />} />
+            <Route path='/Detailpage/:asin' element={<Detailpage />} />
             <Route path='*' element={<Errorpage />} />
           </Routes>
-          <Homepage search= {search} />
           <FooterComponent />
         </ThemeContext.Provider>
 

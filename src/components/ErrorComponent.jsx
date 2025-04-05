@@ -1,13 +1,12 @@
 import React from 'react'
 import { Container } from 'react-bootstrap'
 
-function Errorpage() {
+function ErrorComponent() {
   return (
     <Container>
       console.error('Page not found');
-      
     </Container>
   )
 }
 
-export default Errorpage
+export default ErrorComponent
