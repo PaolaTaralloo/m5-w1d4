@@ -1,0 +1,23 @@
+.background{
+    background-image: url('../assets/Jumbtron.png') ;
+    height: 83vh;
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat;
+}
+
+.imgCustom{
+    width: 25%;
+    
+}
+
+.btnCustom{
+    background-color: #EF5C48 !important;
+    border-color: #EF5C48 !important;
+    margin-bottom: 2em !important;
+}
+
+.btnCustom:hover{
+    background-color: #d95341 !important;
+    border-color: #d95341 !important;
+}

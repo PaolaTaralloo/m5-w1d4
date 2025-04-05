@@ -42,7 +42,7 @@ function DetailBookComp() {
               </Col>
 
               <Col>
-                <div className='d-flex justify-content-end gap-3'>
+                <div className='d-flex justify-content-start gap-3'>
                   <BsHeart className='font-size' />
                   <BsShare className='font-size' />
                 </div>
