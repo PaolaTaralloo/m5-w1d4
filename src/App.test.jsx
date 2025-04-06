@@ -6,11 +6,16 @@ import AllTheBooks from './components/AllTheBooksComp';
 import fantasyBooks from './data/fantasy.json';
 import { BrowserRouter } from 'react-router-dom';
 import CommentAreaComp from './components/CommentAreaComp';
+import { ThemeContext } from './modules/context';
 
 //1. Verifica che il componente Welcome venga montato
 describe('Welcome Component', () => {
     it('renders the WelcomeAlertComp correctly', () => {
-        render(<WelcomeAlertComp />)
+        render(
+            <ThemeContext.Provider value={['light', () => {}]}>
+            <WelcomeAlertComp />
+        </ThemeContext.Provider>
+        )
         expect(screen.getByText('Benvenuto')).toBeInTheDocument()
     })
 })
@@ -20,48 +25,82 @@ describe('AllTheBooks Component', () => {
     it('renders the correct number of book cards', () => {
         render(
             <BrowserRouter>
-            <AllTheBooks search="" />
-        </BrowserRouter>
-        );
-        const bookCards = screen.getAllByRole('img')
-        expect(bookCards).toHaveLength(fantasyBooks.length)
+                <ThemeContext.Provider value={['light', () => {}]}>
+                    <AllTheBooks search="" />
+                </ThemeContext.Provider>
+            </BrowserRouter>
+        )
+
+        const bookImages = screen.getAllByRole('img')
+        expect(bookImages).toHaveLength(fantasyBooks.length)
     })
 })
 
-//3. Verifica che il componente CommentArea venga renderizzato correttamente.
-describe('CommentAreaComp', () => {
+
+ //3. Verifica che il componente CommentArea venga renderizzato correttamente.
+ describe('CommentAreaComp', () => {
     it('renders the CommentAreaComp correctly', () => {
-        render(<CommentAreaComp />)
+        render(
+            <BrowserRouter>
+                <ThemeContext.Provider value={['light', () => {}]}>
+                    <CommentAreaComp />
+                </ThemeContext.Provider>
+            </BrowserRouter>
+        )
+       
         const commentArea = screen.getByTestId('addCommentComp-test');
         expect(commentArea).toBeInTheDocument();
     })
-}) 
+ }) 
 
-//4. Verifica, magari con più tests, che il filtraggio dei libri tramite navbar si comporti come previsto.
-describe('Book filtering', () => {
-    it('filters books correctly based on search input', () => {
+
+ //4. Verifica, magari con più tests, che il filtraggio dei libri tramite navbar si comporti come previsto.
+ describe('CommentAreaComp', () => {
+    it('renders the CommentAreaComp correctly', () => {
         render(
             <BrowserRouter>
+                <ThemeContext.Provider value={['light', () => {}]}>
+                    <CommentAreaComp />
+                </ThemeContext.Provider>
+            </BrowserRouter>
+        )
+        const commentArea = screen.getByTestId('addCommentComp-test');
+        expect(commentArea).toBeInTheDocument();
+    })
+ }) 
+
+// //4. Verifica, magari con più tests, che il filtraggio dei libri tramite navbar si comporti come previsto.
+ describe('Book filtering', () => {
+     it('filters books correctly based on search input', () => {
+         render(
+            <BrowserRouter>
+            <ThemeContext.Provider value={['light', () => {}]}>
                 <AllTheBooks search="witch" />
-            </BrowserRouter>
+            </ThemeContext.Provider>
+        </BrowserRouter>
         )
-        const filteredBooks = screen.getAllByRole('img');
-        const witcherBooks = fantasyBooks.filter(book => 
-            book.title.toLowerCase().includes('witch')
-        )
-        expect(filteredBooks).toHaveLength(witcherBooks.length)
-    })
+         const filteredBooks = screen.getAllByRole('img');
+         const witcherBooks = fantasyBooks.filter(book => 
+             book.title.toLowerCase().includes('witch')
+         )
+         expect(filteredBooks).toHaveLength(witcherBooks.length)
+     })
 
-    it('shows no books when search does not match any title', () => {
-        render(
+     it('shows no books when search does not match any title', () => {
+         render(
             <BrowserRouter>
+            <ThemeContext.Provider value={['light', () => {}]}>
                 <AllTheBooks search="abcd" />
-            </BrowserRouter>
-        );
+            </ThemeContext.Provider>
+        </BrowserRouter>
+         );
         const books = screen.queryAllByRole('img')
-        expect(books).toHaveLength(0)
-    })
-}) 
+         expect(books).toHaveLength(0)
+   })
+ }) 
+
+
+
 
 //5. Verifica che, cliccando su un libro, il suo bordo cambi colore
 //6. + Verifica che, cliccando su di un secondo libro dopo il primo, il bordo del primo libro ritorni normale
@@ -70,8 +109,10 @@ describe('Book selection behavior', () => {
     it('changes border color when a book is clicked and reverts when another is selected', () => {
         render(
             <BrowserRouter>
+            <ThemeContext.Provider value={['light', () => {}]}>
                 <AllTheBooks search="" />
-            </BrowserRouter>
+            </ThemeContext.Provider>
+        </BrowserRouter>
         );
 
         const bookCards = screen.getAllByRole('img')
@@ -93,8 +134,10 @@ describe('Book selection behavior', () => {
     it('deselects a book when clicking it twice', () => {
         render(
             <BrowserRouter>
+            <ThemeContext.Provider value={['light', () => {}]}>
                 <AllTheBooks search="" />
-            </BrowserRouter>
+            </ThemeContext.Provider>
+        </BrowserRouter>
         )
 
         const bookCards = screen.getAllByRole('img')
@@ -108,13 +151,16 @@ describe('Book selection behavior', () => {
     })
 })
 
+
 //7. Verifica che all'avvio della pagina, senza aver ancora cliccato su nessun libro, non ci siano istanze del componente SingleComment all'interno del DOM
 describe('Initial page load', () => {
     it('should not have any SingleComment components when no book is selected', () => {
         render(
             <BrowserRouter>
+            <ThemeContext.Provider value={['light', () => {}]}>
                 <AllTheBooks search="" />
-            </BrowserRouter>
+            </ThemeContext.Provider>
+        </BrowserRouter>
         )
       
         const deleteButtons = screen.queryAllByText('Elimina')
@@ -122,4 +168,35 @@ describe('Initial page load', () => {
     })
 })
 
+
+
 //8. Verifica infine che, cliccando su di un libro con recensioni, esse vengano caricate correttamente all'interno del DOM
+describe('Comments loading', () => {
+    it('shows comments when a book is selected', () => {
+        render(
+            <BrowserRouter>
+                <ThemeContext.Provider value={['light', () => {}]}>
+                    <AllTheBooks search="" />
+                </ThemeContext.Provider>
+            </BrowserRouter>
+        );
+
+        // Trova e clicca sul primo libro
+        const bookCards = screen.getAllByRole('img');
+        const firstBook = bookCards[0].closest('.card-custom');
+        fireEvent.click(firstBook);
+
+        // Usa getAllByTestId invece di getByTestId
+        const commentAreas = screen.getAllByTestId('addCommentComp-test');
+        
+        // Verifica che ci sia almeno un'area commenti
+        expect(commentAreas.length).toBeGreaterThan(0);
+
+        // Verifica che il form per aggiungere recensioni sia presente
+        const reviewLabel = screen.getAllByText('Recensione')[0];
+        const ratingLabel = screen.getAllByText('Valutazione')[0];
+        
+        expect(reviewLabel).toBeInTheDocument();
+        expect(ratingLabel).toBeInTheDocument();
+    });
+});
