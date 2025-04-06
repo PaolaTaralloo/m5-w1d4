@@ -21,7 +21,7 @@ function ErrorComponent() {
         <Col sm= {12}  className='d-flex justify-content-center align-items-center mt-5'>
         <img src={errorImage} alt="Error-404" className='imgCustom' />
         </Col>
-        <Col sm= {12} className='d-flex justify-content-center align-items-center ps-5'>
+        <Col sm= {12} className='d-flex justify-content-center align-items-center '>
           <div className="mt-4 text-center">
             <h1>Error-404</h1>
             <p>Oops! La pagina che stai cercando non esiste.</p>
