@@ -22,6 +22,9 @@ const CommentAreaComp = ({ asin }) => {
   //DEFINISCO LO STATO DI ERRORE
   const [error, setError] = useState(false)
 
+  const addNewComment = (newComment) => {
+    setComments(prevComments => [...prevComments, newComment])
+  }
   /*----------------------------------------------------------------------------------*/
 
   //FETCH PER RECUPERARE I COMMENTI DALL'ENDPOINT TRAMITE useEffect
@@ -33,7 +36,7 @@ const CommentAreaComp = ({ asin }) => {
       try {
         const response = await fetch(urlComments, {
           headers: {
-            Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2JlMGU2YTFlMTQwNjAwMTUzMTRkNmQiLCJpYXQiOjE3NDI2NDE5MTgsImV4cCI6MTc0Mzg1MTUxOH0.APQhZrX46Y-h5KK1AHBIbt358anElVIeaGqSwx0_XTg"
+            Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2JlMGU2YTFlMTQwNjAwMTUzMTRkNmQiLCJpYXQiOjE3NDM5NTE4NTEsImV4cCI6MTc0NTE2MTQ1MX0.oQD5ZroIzhBsuy9WkXSyoF5eoH97cYpM0GQl0wNwSL0"
           }
         }
       )
@@ -77,7 +80,7 @@ const CommentAreaComp = ({ asin }) => {
       {loading && <LoadingComp  />} 
       {error && <ErrorComp />} 
       <div data-testid="addCommentComp-test">
-        <AddCommentComp asin={asin} /> 
+        <AddCommentComp asin={asin} onCommentAdded={addNewComment} /> 
       </div>
       <CommentListComp 
       commentsToShow={comments} 

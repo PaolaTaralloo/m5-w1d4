@@ -10,7 +10,7 @@
 import { useEffect, useState } from 'react'
 import { Button, Form } from 'react-bootstrap'
 
-const AddCommentComp = ({ asin }) => {
+const AddCommentComp = ({ asin, onCommentAdded }) => {
     //DEFINISCO LO STATO DI MEMORIZZAZIONE DEI COMMENTI
     const [comment, setComment] = useState({
         comment: '',
@@ -39,7 +39,7 @@ const AddCommentComp = ({ asin }) => {
               body: JSON.stringify(comment),
               headers: {
                 'Content-type': 'application/json',
-                 Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2JlMGU2YTFlMTQwNjAwMTUzMTRkNmQiLCJpYXQiOjE3NDI2NDE5MTgsImV4cCI6MTc0Mzg1MTUxOH0.APQhZrX46Y-h5KK1AHBIbt358anElVIeaGqSwx0_XTg",
+                 Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2JlMGU2YTFlMTQwNjAwMTUzMTRkNmQiLCJpYXQiOjE3NDM5NTE4NTEsImV4cCI6MTc0NTE2MTQ1MX0.oQD5ZroIzhBsuy9WkXSyoF5eoH97cYpM0GQl0wNwSL0",
               },
             }
           )
@@ -47,11 +47,13 @@ const AddCommentComp = ({ asin }) => {
           //1.appare un alert di conferma
           //2.lo stato del commento ritorna allo stato iniziale, si resetta
           if (response.ok) {
+            const newComment = await response.json() // ottieni il commento dal server
+            onCommentAdded(newComment) // aggiungi il nuovo commento alla lista
             alert('Recensione inviata!')
             setComment({
               comment: '',
               rate: 1,
-              elementId: null,
+              elementId: asin,
             })
           } else {
             throw new Error('Devi inserire tutti i campi') // in caso contrario appare un msg di errore
@@ -79,9 +81,9 @@ const AddCommentComp = ({ asin }) => {
             />
           </Form.Group>
 
-          <Form.Group className="mb-2">
+          <Form.Group className="mb-2" >
             <Form.Label>Valutazione</Form.Label>
-            <Form.Control
+            <Form.Control 
               as="select"
               value={comment.rate}
               onChange={(e) =>
@@ -98,7 +100,7 @@ const AddCommentComp = ({ asin }) => {
               <option>5</option>
             </Form.Control>
           </Form.Group>
-          <Button variant="primary" type="submit">
+          <Button variant="success" type="submit">
             Invia
           </Button>
         </Form>
