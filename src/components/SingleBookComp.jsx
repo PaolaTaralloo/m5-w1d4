@@ -2,8 +2,11 @@ import React, { useState } from 'react';
 import { Card, Button } from 'react-bootstrap';
 import './SingleBookComp.css';
 import { useNavigate } from 'react-router-dom';
+import { ThemeContext } from '../modules/context';
+import { useContext } from 'react';
 
 function SingleBookComp({ book, selected, setSelected }) {
+   const [theme] = useContext(ThemeContext)
    const navigate = useNavigate();
 
     const handleClick = (asin) => {

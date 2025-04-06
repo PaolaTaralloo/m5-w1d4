@@ -18,6 +18,12 @@ function App() {
 
   return (
     <>
+    <div className={`app-container ${theme}`} style={{
+      backgroundColor: theme === 'light' ? '#fff' : '#212529',
+      color: theme === 'light' ? '#000' : '#fff',
+      minHeight: '100vh'
+    }}
+    >
       <BrowserRouter>
         <ThemeContext.Provider value={[theme, setTheme]}>
           <NavbarComponent search={search} handleSearch={handleSearch} />
@@ -32,6 +38,7 @@ function App() {
 
 
       </BrowserRouter>
+      </div>
     </>
 
   )

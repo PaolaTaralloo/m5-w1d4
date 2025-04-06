@@ -1,0 +1,30 @@
+.app-container.dark {
+    background-color: #212529;
+    color: #fff;
+  }
+  
+  .app-container.dark .card {
+    background-color: #343a40;
+    border-color: #454d55;
+  }
+  
+  .app-container.dark .card-title {
+    color: #fff;
+  }
+  
+  .app-container.dark .alert {
+    background-color: #343a40;
+    border-color: #454d55;
+    color: #fff;
+  }
+  
+  .app-container.dark .list-group-item {
+    background-color: #343a40;
+    border-color: #454d55;
+    color: #fff;
+  }
+  
+  .app-container.light {
+    background-color: #fff;
+    color: #000;
+  }

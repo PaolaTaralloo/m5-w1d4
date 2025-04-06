@@ -3,8 +3,12 @@ import CommentListComp from './CommentListComp'
 import AddCommentComp from './AddCommentComp'
 import LoadingComp from './LoadingComp'
 import ErrorComp from './ErrorComp'
+import { ThemeContext } from '../modules/context';
+import { useContext } from 'react';
 
 const CommentAreaComp = ({ asin }) => {
+
+  const [theme] = useContext(ThemeContext)
 
   //DEFINISCO L'ENDPOINT DEI COMMENTI
   const urlComments = 'https://striveschool-api.herokuapp.com/api/books/' + asin + '/comments/'
@@ -69,10 +73,12 @@ const CommentAreaComp = ({ asin }) => {
   }
 
   return (
-    <div className="text-center">
-      {loading && <LoadingComp />} 
+    <div className={`text-center ${theme}`}>
+      {loading && <LoadingComp  />} 
       {error && <ErrorComp />} 
-      <AddCommentComp asin={asin} /> 
+      <div data-testid="addCommentComp-test">
+        <AddCommentComp asin={asin} /> 
+      </div>
       <CommentListComp 
       commentsToShow={comments} 
       updateCommentList={updateCommentList}

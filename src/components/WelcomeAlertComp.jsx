@@ -1,10 +1,13 @@
 import React from 'react'
 import { Container, Row, Col, Alert, Button } from 'react-bootstrap';
+import { ThemeContext } from '../modules/context';
+import { useContext } from 'react';
 
 import './WelcomeAlertComp.css';
 import booksJumb from '../assets/booksJumb.png';
 
 export default function WelcomeAlertComp() {
+    const [theme] = useContext(ThemeContext)
     return (
 
         <>
