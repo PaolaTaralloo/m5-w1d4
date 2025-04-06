@@ -14,11 +14,6 @@ const allBooks = [...fantasyBooks];
 const AllTheBooks = ({search}) => {
   const [selected, setSelected] = useState(null);
   const [books, setBooks] = useState (allBooks)
-  // const [search, setSearch] = useState ()
-
-  // const handleSearch = (event) => {
-  //   setSearch (event.target.value)
-  //   // console.log(search)
 
   useEffect (() => {
     const filteredBooks = allBooks.filter ((book) => 
@@ -29,33 +24,31 @@ const AllTheBooks = ({search}) => {
 
   return (
     <>
-     {/* <Container className="mt-4, mb-3" >
-      <Form>
-        <Row>
-          <Col className='mb-3'>
-            <Form.Control placeholder="Cerca" onChange={handleSearch}/>
-          </Col>
-        </Row>
-      </Form>
-      </Container> */}
 
-      <Container className="mt-4, mb-5" >
-        <Row >
-        <Col md={8} className = "mt-4">
+      <Container className="mt-4 mb-5" >
         <Row>
+        <Col md={8} sm={12} className = "mt-4 "> 
+        <Row >
         <h4>Fantasy Books</h4>
           {books.map((book) => (
-            <SingleBookComp
-            
-            key={book.asin}
-            book={book}
-            selected={selected}
-            setSelected={setSelected}/>
-            
+            <Col key={book.asin} lg={4} md={6} sm={12} className="mb-4">
+              <SingleBookComp
+                book={book}
+                selected={selected}
+                setSelected={setSelected}
+              />
+              {/* Show comment area below the book on small screens */}
+              <div className="d-block d-md-none mt-3">
+                {selected === book.asin && (
+                  <CommentAreaComp asin={selected} />
+                )}
+              </div>
+            </Col>
           ))}
           </Row>
           </Col>
-          <Col md={4} className = "mt-4">
+          {/* Show comment area on the side for medium screens and larger */}
+          <Col md={4} sm={12} className = "mt-4 d-none d-md-block">
           <h4>Comment Area</h4>
           {selected ? ( 
             <CommentAreaComp asin={selected}></CommentAreaComp>

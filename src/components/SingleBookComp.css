@@ -1,5 +1,23 @@
-  .card-img-top{
-  width: 100% !important;
-  height: 60% !important;
-  object-fit: cover !important;
-} 
+.card-img-top {
+  height: 60%;/* Altezza fissa per tutte le immagini */
+  object-fit: cover; /* Adatta l'immagine senza distorsioni */
+  width: 100%; /* Assicura che l'immagine occupi tutta la larghezza */
+}
+
+.card-custom {
+ width: 100%;
+  max-width: 20em; /* Larghezza massima per le card */
+  
+  height: 25rem !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-body {
+  height: 40%;
+  flex-grow: 1; /* Permette al card body di occupare lo spazio disponibile */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Distribuisce il contenuto in modo uniforme */
+}
