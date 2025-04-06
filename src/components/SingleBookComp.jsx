@@ -32,7 +32,7 @@ function SingleBookComp({ book, selected, setSelected }) {
                     <Card.Title>{book.title}</Card.Title>
                 </Card.Body>
             </Card>
-            <Button variant="outline-primary" onClick={() => handleClick(book.asin)}>
+            <Button variant="outline-primary" className='btnCustom' onClick={() => handleClick(book.asin)}>
                 Scopri di più
             </Button>
         </div>
