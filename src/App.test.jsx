@@ -4,9 +4,9 @@ import '@testing-library/jest-dom';
 import WelcomeAlertComp from './components/WelcomeAlertComp';
 
 describe('Welcome Component', () => {
-    it('renders the WelcomeAlertComp', () => {
+    it('renders the WelcomeAlertComp correctly', () => {
         render(<WelcomeAlertComp />);
-        expect(screen.getByText('Welcome to the Book Store')).toBeInTheDocument();
+        expect(screen.getByText('Benvenuto')).toBeInTheDocument();
     });
 });
 
